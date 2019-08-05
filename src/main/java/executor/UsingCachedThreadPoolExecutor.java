@@ -5,11 +5,15 @@ import common.LoopTaskA;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class UsingFixedThreadPool {
+public class UsingCachedThreadPoolExecutor {
 
     public static void main(String[] args) {
         System.out.println("Main Thread start here...");
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        ExecutorService executorService = Executors.newCachedThreadPool();
+
+        executorService.execute(new LoopTaskA());
+        executorService.execute(new LoopTaskA());
+        executorService.execute(new LoopTaskA());
         executorService.execute(new LoopTaskA());
         executorService.execute(new LoopTaskA());
         executorService.execute(new LoopTaskA());
